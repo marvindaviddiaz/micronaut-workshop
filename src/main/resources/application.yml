@@ -15,9 +15,9 @@ micronaut:
 
 datasources:
   default:
-    url: "jdbc:oracle:thin:@${DB_NAME}"
+    url: "jdbc:oracle:thin:@//${DB_HOST}:1521/xe"
     driverClassName: oracle.jdbc.OracleDriver
-    databaseName: "${DB_SCHEMA}"
+#    databaseName: "${DB_SCHEMA}"
     username: "${DB_USER}"
     password: "${DB_PASSWORD}"
     dialect: ORACLE
@@ -25,9 +25,11 @@ datasources:
       oracle:
         jdbc:
           fanEnabled: false
-flyway:
+
+liquibase:
   datasources:
     default:
+      change-log: 'classpath:db/migration/liquibase-changelog.xml'
       enabled: true
 
 owners:

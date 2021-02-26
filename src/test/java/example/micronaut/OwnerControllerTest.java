@@ -32,16 +32,6 @@ public class OwnerControllerTest {
         assertEquals(2, list.size());
     }
 
-    // using controller directly
-    @Test
-    void testAddOwnerValid() {
-        Owner bob = ownerController.add(new Owner("Bob", 35));
-        Assertions.assertNotNull(bob);
-        assertEquals("Bob", bob.getName());
-        assertEquals(35, bob.getAge());
-        assertTrue(ownerController.getOwners().contains(bob));
-    }
-
     @Client("/owners")
     interface OwnerClient {
         @Get("/")
